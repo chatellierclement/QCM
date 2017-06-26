@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>ça marche izi</h1>
+	<h1>Accueil du QCM</h1>
 </body>
 </html>
