@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import conf.ConnectionManager;
 import bo.CandidatBO;
@@ -34,5 +36,36 @@ public class CandidatDAO {
 		con.close();
 		
 		return candidatBO;
+	}
+
+	public static List<CandidatBO> getAll(){
+
+		List<CandidatBO> listPersonnes = new ArrayList<CandidatBO>();
+		try {
+
+			Connection con = ConnectionManager.getConnection();
+			String data = "select * from Candidat";
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(data);
+			while (rs.next()){
+				CandidatBO pCandidat = new CandidatBO();
+				pCandidat.setId(rs.getInt(1));
+				pCandidat.setNom(rs.getString(2));
+				pCandidat.setPrenom(rs.getString(3));
+				listPersonnes.add(pCandidat);
+			}
+			
+			rs.close();
+			stmt.close();
+			con.close();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+
+
+		return listPersonnes;
 	}
 }
