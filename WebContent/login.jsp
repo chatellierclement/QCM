@@ -7,14 +7,14 @@
 	<title>Insert title here</title>
 </head>
 <body>
-	<% Boolean test = (Boolean) request.getAttribute("error"); %>
+
 	<% if( request.getAttribute("error") != null && (Boolean) request.getAttribute("error")){ %>
 					<div class="alert alert-danger" role="alert">
 						  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
 						  <span class="sr-only">Error:</span>
-						  <%=request.getAttribute("error")%>
+						  fezfef
 					</div> 
-				<%} %>
+	<%} %>
 	
 	
 	

@@ -40,8 +40,8 @@ public class LoginServlet extends HttpServlet {
 				response.sendRedirect("logged");
 
 			} else {
-				generate(request, response);
 				request.setAttribute("error", true);
+				generate(request, response);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
