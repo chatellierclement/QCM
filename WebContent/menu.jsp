@@ -5,7 +5,7 @@
 			<ul>
 				<li><a href="<%=request.getContextPath()%>/login">Connexion</a></li>
 				<li><a href="<%=request.getContextPath()%>/listeCandidat">Liste des Candidats</a></li>
-				<li><a href="elements.html">Elements</a></li>
+				<li><a href="surprise.jsp">Surprise !!!!!!</a></li>
 				<li><span class="opener">Submenu</span>
 					<ul>
 						<li><a href="#">Lorem Dolor</a></li>
