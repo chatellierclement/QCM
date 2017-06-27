@@ -3,7 +3,7 @@
 			<h2>Menu</h2>
 			</header>
 			<ul>
-				<li><a href="<%=request.getContextPath()%>/login">Connexion</a></li>
+				<li><a href="<%=request.getContextPath()%>/deconnect">Déconnexion</a></li>
 				<li><a href="<%=request.getContextPath()%>/listeCandidat">Liste des Candidats</a></li>
 				<li><a href="surprise.jsp">Surprise !!!!!!</a></li>
 				<li><span class="opener">Submenu</span>
