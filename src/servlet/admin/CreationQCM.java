@@ -39,7 +39,7 @@ public class CreationQCM extends HttpServlet {
 	}
 
 	private void doWork(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/admin/creationQCM.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/creationQCM.jsp");
 		try {
 			dispatcher.forward(request, response);
 		} catch (ServletException | IOException e) {

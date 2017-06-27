@@ -29,7 +29,7 @@ public class LoginServlet extends HttpServlet {
 	}
 	
 	private void generate(HttpServletRequest req, HttpServletResponse resp) {
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/login.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("login.jsp");
 		try {
 			dispatcher.forward(req, resp);
 		} catch (ServletException | IOException e) {
