@@ -30,7 +30,7 @@ public class LoggedServlet extends HttpServlet {
 	}
 	
 	private void generate(HttpServletRequest req, HttpServletResponse resp) {
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/logged.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("logged.jsp");
 		
 		List<TestBO> listTest = null;
 		try {
