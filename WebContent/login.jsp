@@ -36,7 +36,7 @@
 				<div class="form-group">
 					<button type="submit">Connexion</button>
 				</div>
-			</form>
+			</form>		
 		</div>
 	
 	</div>

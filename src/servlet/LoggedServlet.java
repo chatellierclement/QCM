@@ -10,11 +10,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 
+import bo.CandidatBO;
 import bo.TestBO;
 import dao.TestDAO;
 
@@ -36,23 +36,37 @@ public class LoggedServlet extends HttpServlet {
 	}
 	
 	private void generate(HttpServletRequest req, HttpServletResponse resp) {
-		RequestDispatcher dispatcher = req.getRequestDispatcher("logged.jsp");
+		CandidatBO sessio = (CandidatBO) req.getSession().getAttribute("unCandidat");
 		
-		List<TestBO> listTest = null;
-		try {
-			listTest = TestDAO.selectAll();
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-			logger.error("Erreur lors de l'appel de la fonction selectAll du fichier LoggedServlet");
+		if(sessio == null) {
+			try {
+				resp.sendRedirect("login");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		} else {
+			RequestDispatcher dispatcher = req.getRequestDispatcher("logged.jsp");
+			List<TestBO> listTest = null;
+			try {
+				listTest = TestDAO.selectAll();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+				logger.error("Erreur lors de l'appel de la fonction selectAll du fichier LoggedServlet");
+			}
+			
+			req.setAttribute("listeTest", listTest);
+			try {
+				dispatcher.forward(req, resp);
+			} catch (ServletException | IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
-		req.setAttribute("listeTest", listTest);
-		try {
-			dispatcher.forward(req, resp);
-		} catch (ServletException | IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
+		
 	}
 }
