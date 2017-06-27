@@ -11,8 +11,8 @@
 	<h1>Connexion</h1>
 
 	<form action="login" method="POST">
-		<label>Login:</label><input name="login" type="text">
-		<label>Passwod</label><input name="password" type="password">
+		<label>nom:</label><input name="nom" type="text">
+		<label>Passwod</label><input name="prenom" type="password">
 		<button type="submit">Connexion</button>
 	</form>
 

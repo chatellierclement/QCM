@@ -28,15 +28,17 @@ public class LoginServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String login = request.getParameter("login");
-		String password = request.getParameter("password");
-		
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
+		String nom = request.getParameter("nom");
+		String prenom = request.getParameter("prenom");
 		CandidatDAO dao = new CandidatDAO();
+		CandidatBO unCandidat = new CandidatBO();
+		
 		try {
-			dao.selectOneByNomPrenom(login, password);
-			
+			unCandidat = dao.selectOneByNomPrenom(nom, prenom);
+			if(unCandidat != null) {
+				
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
