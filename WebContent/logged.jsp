@@ -2,10 +2,10 @@
 <%@page import="bo.TestBO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
+	pageEncoding="ISO-8859-1"%>
+
+<%@include file="content.jsp"%>
+
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Choix du test</title>
 </head>
@@ -13,7 +13,7 @@
 <% 	CandidatBO sessio = (CandidatBO) request.getSession().getAttribute("unCandidat"); %>	
 
 	<h1>Bienvenue <%= sessio.getPrenom() %> <%= sessio.getNom() %> </h1>
-	
+	<hr class="major" />
 	<h3>Listes des tests</h3>
 	
 	<% List<TestBO> listTest = ((List<TestBO>) request.getAttribute("listeTest")) ; %>
@@ -26,3 +26,11 @@
 	<% } %>
 </body>
 </html>
+
+<!-- Elements -->
+</div>
+
+</section>
+
+</div>
+</div>
