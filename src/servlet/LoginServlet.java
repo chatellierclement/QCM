@@ -37,13 +37,13 @@ public class LoginServlet extends HttpServlet {
 		try {
 			unCandidat = dao.selectOneByNomPrenom(nom, prenom);
 			if(unCandidat != null) {
-				
+				response.sendRedirect("logged");
+			} else {
+				generate(request, response);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 	}
 	
 	private void generate(HttpServletRequest req, HttpServletResponse resp) {
