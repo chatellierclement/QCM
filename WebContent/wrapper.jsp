@@ -6,8 +6,8 @@
 			<div class="inner">
 
 				<!-- Header -->
-				<header id="header"> <a href="" class="logo"><strong>Eni QCM</strong>
-					by HTML5 UP</a>
+				<header id="header"> <a href="<%=request.getContextPath()%>/logged" class="logo"><strong>Eni QCM</strong>
+					by Clément.C, Maxime.D, Alexandre.J, Jérémy.L</a>
 				</header>
 
 				<!-- Content -->

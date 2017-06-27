@@ -3,8 +3,8 @@
 			<h2>Menu</h2>
 			</header>
 			<ul>
-				<li><a href="index.html">Homepage</a></li>
-				<li><a href="generic.html">Generic</a></li>
+				<li><a href="<%=request.getContextPath()%>/login">Connexion</a></li>
+				<li><a href="<%=request.getContextPath()%>/listeCandidat">Liste des Candidats</a></li>
 				<li><a href="elements.html">Elements</a></li>
 				<li><span class="opener">Submenu</span>
 					<ul>

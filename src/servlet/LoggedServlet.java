@@ -11,11 +11,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
+
+import org.apache.log4j.Logger;
+
 import bo.TestBO;
 import dao.TestDAO;
 
 @WebServlet("/logged")
 public class LoggedServlet extends HttpServlet {
+
+	private static Logger logger = Logger.getLogger(LoggedServlet.class);
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -38,6 +44,7 @@ public class LoggedServlet extends HttpServlet {
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
+			logger.error("Erreur lors de l'appel de la fonction selectAll du fichier LoggedServlet");
 		}
 		
 		req.setAttribute("listeTest", listTest);
