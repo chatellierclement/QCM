@@ -1,6 +1,7 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -10,12 +11,16 @@ import bo.CandidatBO;
 
 public class CandidatDAO {
 
-	public CandidatBO selectOneByNomPrenom() throws SQLException {
+	public CandidatBO selectOneByNomPrenom(String nom, String prenom) throws SQLException {
 		CandidatBO candidatBO = null;
 		Connection con = ConnectionManager.getConnection();
-		Statement state = con.createStatement();
 		String req = "SELECT * FROM candidat WHERE nom = ? AND prenom = ? ";
-		ResultSet res = state.executeQuery(req);
+		PreparedStatement stmt;
+		
+		stmt = con.prepareStatement(req);
+		stmt.setString(1, nom);
+		stmt.setString(2, prenom);
+		ResultSet res = stmt.executeQuery();
 
 		if (res.next()) {
 			candidatBO = new CandidatBO();
@@ -25,7 +30,7 @@ public class CandidatDAO {
 		}
 
 		res.close();
-		state.close();
+		stmt.close();
 		con.close();
 		
 		return candidatBO;

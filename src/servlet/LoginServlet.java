@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,6 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import bo.CandidatBO;
+import dao.CandidatDAO;
 
 /**
  * Servlet implementation class LoginServlet
@@ -25,7 +29,19 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		generate(request, response);
+		
+		String login = request.getParameter("login");
+		String password = request.getParameter("password");
+		
+		CandidatDAO dao = new CandidatDAO();
+		try {
+			dao.selectOneByNomPrenom(login, password);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 	
 	private void generate(HttpServletRequest req, HttpServletResponse resp) {
