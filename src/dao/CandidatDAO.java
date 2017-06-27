@@ -14,16 +14,14 @@ public class CandidatDAO {
 		CandidatBO candidatBO = null;
 		Connection con = ConnectionManager.getConnection();
 		Statement state = con.createStatement();
-		ResultSet res = state.executeQuery("SELECT * FROM visiteur WHERE VIS_MATRICULE='"
-						+ "' AND VIS_NOM ='" + "'");
+		String req = "SELECT * FROM candidat WHERE nom = ? AND prenom = ? ";
+		ResultSet res = state.executeQuery(req);
 
 		if (res.next()) {
-			String login = res.getString("");
-			String pass = res.getString("");
 			candidatBO = new CandidatBO();
 			candidatBO.setId(1);
-			candidatBO.setNom("");
-			candidatBO.setPrenom("");
+			candidatBO.setNom(res.getString(2));
+			candidatBO.setPrenom(res.getString(3));
 		}
 
 		res.close();
