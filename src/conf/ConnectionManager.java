@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class ConnectionManager {
 
-	static String url = "jdbc:sqlserver://10.1.0.68:1433;databasename=eniProjet";
+	static String url = "jdbc:sqlserver://10.1.0.68:1433;databasename=QCM";
 	static String driverName = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
 	static String username = "sa";
 	static String password = "Pa$$w0rd";
