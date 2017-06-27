@@ -7,12 +7,23 @@
 	<title>Insert title here</title>
 </head>
 <body>
-
+	<% Boolean test = (Boolean) request.getAttribute("error"); %>
+	<% if( request.getAttribute("error") != null && (Boolean) request.getAttribute("error")){ %>
+					<div class="alert alert-danger" role="alert">
+						  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+						  <span class="sr-only">Error:</span>
+						  <%=request.getAttribute("error")%>
+					</div> 
+				<%} %>
+	
+	
+	
 	<h1>Connexion</h1>
+
 
 	<form action="login" method="POST">
 		<label>nom:</label><input name="nom" type="text">
-		<label>Passwod</label><input name="prenom" type="password">
+		<label>Password</label><input name="prenom" type="password">
 		<button type="submit">Connexion</button>
 	</form>
 

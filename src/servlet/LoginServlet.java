@@ -33,13 +33,15 @@ public class LoginServlet extends HttpServlet {
 		String prenom = request.getParameter("prenom");
 		CandidatDAO dao = new CandidatDAO();
 		CandidatBO unCandidat = new CandidatBO();
-		
+
 		try {
 			unCandidat = dao.selectOneByNomPrenom(nom, prenom);
 			if(unCandidat != null) {
 				response.sendRedirect("logged");
+
 			} else {
 				generate(request, response);
+				request.setAttribute("error", true);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
