@@ -26,11 +26,11 @@
 		<div class="content">
 			<form action="login" method="POST">
 				<div class="form-group">
-				<label>nom</label>
+				<label>Nom</label>
 				<input name="nom" type="text">
 				</div>
 				<div class="form-group">
-				<label>Password</label>
+				<label>Prenom</label>
 				<input name="prenom" type="password">
 				</div>
 				<div class="form-group">
