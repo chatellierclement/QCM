@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import bo.CandidatBO;
 import dao.CandidatDAO;
@@ -33,10 +34,12 @@ public class LoginServlet extends HttpServlet {
 		String prenom = request.getParameter("prenom");
 		CandidatDAO dao = new CandidatDAO();
 		CandidatBO unCandidat = new CandidatBO();
-
+		
 		try {
 			unCandidat = dao.selectOneByNomPrenom(nom, prenom);
 			if(unCandidat != null) {
+				HttpSession session = request.getSession();
+				session.setAttribute( "unCandidat", unCandidat );
 				response.sendRedirect("logged");
 
 			} else {

@@ -1,3 +1,4 @@
+<%@page import="bo.CandidatBO"%>
 <%@page import="bo.TestBO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -9,7 +10,9 @@
 <title>Choix du test</title>
 </head>
 <body>
-	<h1>Bienvenue XXXX</h1>
+<% 	CandidatBO sessio = (CandidatBO) request.getSession().getAttribute("unCandidat"); %>	
+
+	<h1>Bienvenue <%= sessio.getPrenom() %> <%= sessio.getNom() %> </h1>
 	
 	<h3>Listes des tests</h3>
 	
