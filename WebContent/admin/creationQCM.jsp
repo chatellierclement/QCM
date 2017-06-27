@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Creation d'un QCM</title>
 </head>
 <body>
-	<h1>Accueil du QCM</h1>
+	<h1>Création d'un QCM</h1>
 </body>
 </html>
