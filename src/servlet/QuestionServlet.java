@@ -55,7 +55,7 @@ public class QuestionServlet extends HttpServlet{
 				pQuestion = QuestionDAO.selectAllByCategorie(id);
 
 				req.setAttribute("pReponse", pReponse);
-				//req.setAttribute("pQuestion", pQuestion);
+				req.setAttribute("pQuestion", pQuestion);
 			} catch (SQLException e1) {
 				
 				// TODO Auto-generated catch block
