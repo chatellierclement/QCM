@@ -39,6 +39,10 @@ public class TestServlet extends HttpServlet {
 		TestBO unTest = null;
 		try {
 			unTest = TestDAO.selectById(id);
+			
+			req.setAttribute("unTest", unTest);
+			
+			
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
