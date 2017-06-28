@@ -1,11 +1,14 @@
 package bo;
 
-public class QuestionBO {
-	
+public class CategorieBO {
+
+	public CategorieBO(){
 		
+	}
+	
 	private int id;
 	private String libelle;
-	private CategorieBO idCategorie;
+	
 	
 	public int getId() {
 		return id;
@@ -18,12 +21,6 @@ public class QuestionBO {
 	}
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
-	}
-	public CategorieBO getIdCategorie() {
-		return idCategorie;
-	}
-	public void setIdCategorie(CategorieBO idCategorie) {
-		this.idCategorie = idCategorie;
 	}
 	
 	
