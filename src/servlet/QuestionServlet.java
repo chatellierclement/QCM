@@ -16,6 +16,7 @@ import dao.ReponseDAO;
 import bo.CandidatBO;
 import bo.QuestionBO;
 import bo.ReponseBO;
+import bo.Utilisateur;
 
 @WebServlet("/question")
 public class QuestionServlet extends HttpServlet{
@@ -33,15 +34,15 @@ public class QuestionServlet extends HttpServlet{
 	private void generate(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
 
-		CandidatBO sessio = (CandidatBO) req.getSession().getAttribute(
-				"unCandidat");
-		if (sessio == null) {
+		Utilisateur sessionUtilisateur = (Utilisateur) req.getSession().getAttribute("utilisateur");
+		if(sessionUtilisateur == null) {
 			try {
 				resp.sendRedirect("login");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+
 		} else {
 			// coder ici :
 			int id = Integer.parseInt(req.getParameter("id"));
