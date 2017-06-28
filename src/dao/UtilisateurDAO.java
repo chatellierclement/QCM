@@ -4,11 +4,45 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
+import bo.CategorieBO;
 import bo.Utilisateur;
 import conf.ConnectionManager;
 
 public class UtilisateurDAO {
+	
+	public static List<Utilisateur> getAll(){
+
+		List<Utilisateur> lesUtilisateurs = new ArrayList<Utilisateur>();
+		try {
+
+			Connection con = ConnectionManager.getConnection();
+			String data = "SELECT * FROM UTILISATEURS";
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(data);
+			
+			while(rs.next())
+			{
+				Utilisateur utilisateur = new Utilisateur();
+				utilisateur.setNom(rs.getString(1));
+				utilisateur.setPrenom((rs.getString(2)));
+				utilisateur.setType(rs.getString(3));
+				lesUtilisateurs.add(utilisateur);
+			}
+			
+			rs.close();
+			stmt.close();
+			con.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return lesUtilisateurs;
+	}
 	
 	public static Utilisateur selectOneByNomPrenom(String nom, String prenom) throws SQLException {
 		Utilisateur utilisateur = null;

@@ -12,10 +12,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bo.CandidatBO;
 import bo.TestBO;
-import dao.CandidatDAO;
+import bo.Utilisateur;
 import dao.TestDAO;
+import dao.UtilisateurDAO;
 
 
 @SuppressWarnings("serial")
@@ -43,9 +43,9 @@ public class ListeCandidatServlet extends HttpServlet{
 	}
 	
 	private void generate(HttpServletRequest request, HttpServletResponse resp) {
-		CandidatBO sessio = (CandidatBO) request.getSession().getAttribute("unCandidat");
+		Utilisateur sessionUtilisateur = (Utilisateur) request.getSession().getAttribute("utilisateur");
 		
-		if(sessio == null) {
+		if(sessionUtilisateur == null) {
 			try {
 				resp.sendRedirect("login");
 			} catch (IOException e) {
@@ -56,10 +56,10 @@ public class ListeCandidatServlet extends HttpServlet{
 		}else{
 			RequestDispatcher dispatcher = request.getRequestDispatcher("listeCandidat.jsp");
 			
-			List<CandidatBO> listePersonne = null;
-			listePersonne = CandidatDAO.getAll();
+			List<Utilisateur> lesUtilisateurs = null;
+			lesUtilisateurs = UtilisateurDAO.getAll();
 			
-			request.setAttribute("listePersonne", listePersonne);
+			request.setAttribute("lesUtilisateurs", lesUtilisateurs);
 			try {
 				dispatcher.forward(request, resp);
 			} catch (ServletException | IOException e) {

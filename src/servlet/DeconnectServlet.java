@@ -11,10 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bo.CandidatBO;
 import bo.TestBO;
 import bo.Utilisateur;
-import dao.CandidatDAO;
 import dao.TestDAO;
 
 @WebServlet("/deconnect")

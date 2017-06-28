@@ -14,7 +14,6 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 
-import bo.CandidatBO;
 import bo.TestBO;
 import bo.Utilisateur;
 import dao.TestDAO;

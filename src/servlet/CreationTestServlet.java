@@ -11,10 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bo.CandidatBO;
 import bo.CategorieBO;
 import bo.TestBO;
-import dao.CandidatDAO;
 import dao.CategorieDAO;
 import dao.TestDAO;
 

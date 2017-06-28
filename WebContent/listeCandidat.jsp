@@ -9,8 +9,7 @@
 <hr class="major" />
 <% 	Utilisateur sessionutilisateur = (Utilisateur) request.getSession().getAttribute("utilisateur"); %>	
 <%
-	List<CandidatBO> listePersonne = ((List<CandidatBO>) request
-			.getAttribute("listePersonne"));
+	List<Utilisateur> lesUtilisateurs = ((List<Utilisateur>) request.getAttribute("lesUtilisateurs"));
 %>
 <div class="table-wrapper">
 	<table>
@@ -19,17 +18,19 @@
 				<th>Id</th>
 				<th>Nom</th>
 				<th>Prenom</th>
+				<th>Type</th>
 			</tr>
 		</thead>
 		<tbody>
 			<%
-				for (CandidatBO candidat : listePersonne) {
+				for (Utilisateur utilisateur : lesUtilisateurs) {
 			%>
 			<tr>
 
-				<td><%=candidat.getId()%></td>
-				<td><%=candidat.getNom()%></td>
-				<td><%=candidat.getPrenom()%></td>
+				<td><%=utilisateur.getId()%></td>
+				<td><%=utilisateur.getNom()%></td>
+				<td><%=utilisateur.getPrenom()%></td>
+				<td><%=utilisateur.getType() %>
 			</tr>
 			<%
 				}

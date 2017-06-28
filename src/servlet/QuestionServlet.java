@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.QuestionDAO;
 import dao.ReponseDAO;
-import bo.CandidatBO;
 import bo.QuestionBO;
 import bo.ReponseBO;
 import bo.Utilisateur;

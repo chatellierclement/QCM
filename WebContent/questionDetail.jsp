@@ -1,4 +1,3 @@
-<%@page import="bo.CandidatBO"%>
 <%@page import="bo.ReponseBO"%>
 <%@page import="bo.QuestionBO"%>
  <%@page import="java.util.List"%>
@@ -17,7 +16,7 @@
 <title>Liste des Réponses</title>
 <h1>Question : <%= pReponse.get(0).getQuestion().getId() %></h1>
 <hr class="major" />
-<% 	CandidatBO sessio = (CandidatBO) request.getSession().getAttribute("unCandidat"); %>	
+<% 	Utilisateur sessionUtilisateur = (Utilisateur) request.getSession().getAttribute("utilisateur"); %>	
 
 <div class="table-wrapper">
 	<table>
