@@ -11,6 +11,7 @@
 	<br/>
 	<div class="col-md-6 col-md-offset-3">
 		<form action="creationQuestion" method="post" align="center">
+			<% //List<CategorieBO> listeCategorie = ((List<CategorieBO>) request.getAttribute("listeCategorie")); %>
 			<select name="categorie">
 				<option>Categorie</option>
 			</select>
