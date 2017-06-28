@@ -15,7 +15,7 @@
 
 
 <title>Liste des Réponses</title>
-<h1>Question : <%= pReponse.get(0).getQuestion().getId() %></h1>
+<h1>Question : <%= pReponse.get(0).getIdQuestion().getId() %></h1>
 <hr class="major" />
 <% 	CandidatBO sessio = (CandidatBO) request.getSession().getAttribute("unCandidat"); %>	
 
