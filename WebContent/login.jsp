@@ -22,10 +22,10 @@
 		<div class="content">
 			<form action="login" method="POST">
 				<div class="form-group">
-					<label>nom</label> <input name="nom" type="text">
+					<label>Nom</label> <input name="nom" type="text">
 				</div>
 				<div class="form-group">
-					<label>Password</label> <input name="prenom" type="password">
+					<label>Prenom</label> <input name="prenom" type="password">
 				</div>
 				<div class="form-group">
 					<button type="submit">Connexion</button>
