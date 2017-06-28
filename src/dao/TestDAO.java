@@ -20,7 +20,7 @@ public class TestDAO {
 
 		while (res.next()) {
 			TestBO testBO = new TestBO();
-			testBO.setId(1);
+			testBO.setId(res.getInt(1));
 			testBO.setLibelle(res.getString(2));
 			listTestBO.add(testBO);
 		}
