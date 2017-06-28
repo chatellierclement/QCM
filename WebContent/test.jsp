@@ -30,6 +30,9 @@
 				<td><%=test.getCategorie().getLibelle()%></td>
 				<td><%=test.getId()%></td>
 				<td><%=test.getLibelle()%></td>
+<%-- 				<td><a href="<%=request.getContextPath()%>/test?id=<%=test.getId()%>">Lancer le test</a>
+ --%>				<td><a href="<%=request.getContextPath()%>/question?id=<%=test.getId() %>" class="button special">Répondre</a></td>
+				
 			</tr>
 			<%
 				}
