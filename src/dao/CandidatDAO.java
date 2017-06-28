@@ -26,7 +26,7 @@ public class CandidatDAO {
 
 		if (res.next()) {
 			candidatBO = new CandidatBO();
-			candidatBO.setId(1);
+			candidatBO.setId(res.getInt(1));
 			candidatBO.setNom(res.getString(2));
 			candidatBO.setPrenom(res.getString(3));
 		}
