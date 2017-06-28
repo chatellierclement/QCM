@@ -1,3 +1,5 @@
+<%@page import="bo.CategorieBO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -11,10 +13,18 @@
 	<br/>
 	<div class="col-md-6 col-md-offset-3">
 		<form action="creationQuestion" method="post" align="center">
-			<% //List<CategorieBO> listeCategorie = ((List<CategorieBO>) request.getAttribute("listeCategorie")); %>
-			<select name="categorie">
-				<option>Categorie</option>
-			</select>
+			
+			<div class="col-md-3">
+				<label>Catégorie :</label>
+			</div>
+			<div class="col-md-9">
+				<% List<CategorieBO> listeCategorie = ((List<CategorieBO>) request.getAttribute("listeCategorie")); %>
+				<select class="form-control" name="categorie">
+					<% for (CategorieBO categorie : listeCategorie) { %>
+					<option value="<%= categorie.getId() %>"><%= categorie.getLibelle() %></option>
+					<% } %>
+				</select>
+			</div>
 		
 			<textarea class="input-sm form-control" name="question" placeholder="Saisissez la question"></textarea>
 	
