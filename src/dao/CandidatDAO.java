@@ -13,7 +13,7 @@ import bo.CandidatBO;
 
 public class CandidatDAO {
 
-	public CandidatBO selectOneByNomPrenom(String nom, String prenom) throws SQLException {
+	public static CandidatBO selectOneByNomPrenom(String nom, String prenom) throws SQLException {
 		CandidatBO candidatBO = null;
 		Connection con = ConnectionManager.getConnection();
 		String req = "SELECT * FROM candidat WHERE nom = ? AND prenom = ? ";

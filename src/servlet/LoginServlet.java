@@ -32,11 +32,9 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		String nom = request.getParameter("nom");
 		String prenom = request.getParameter("prenom");
-		CandidatDAO dao = new CandidatDAO();
-		CandidatBO unCandidat = new CandidatBO();
 		
 		try {
-			unCandidat = dao.selectOneByNomPrenom(nom, prenom);
+			CandidatBO unCandidat = CandidatDAO.selectOneByNomPrenom(nom, prenom);
 			if(unCandidat != null) {
 				HttpSession session = request.getSession();
 				session.setAttribute( "unCandidat", unCandidat );
