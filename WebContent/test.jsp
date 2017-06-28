@@ -7,11 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-<% 	CandidatBO sessio = (CandidatBO) request.getSession().getAttribute("unCandidat"); %>	
+<% 	Utilisateur sessionUtilisateur = (Utilisateur) request.getSession().getAttribute("utilisateur"); %>	
 <%
 	List<QuestionBO> pTest = ((List<QuestionBO>) request.getAttribute("unTest"));
 %>
-	<h1>Bienvenue sur le test Monsieur <%=sessio.getNom() %> - <%=sessio.getPrenom() %></h1>
+	<h1>Bienvenue sur le test Monsieur <%=sessionUtilisateur.getNom() %> - <%=sessionUtilisateur.getPrenom() %></h1>
 
 <div class="table-wrapper">
 	<table>

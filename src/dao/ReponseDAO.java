@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import bo.CategorieBO;
 import bo.QuestionBO;
 import bo.ReponseBO;
 import conf.ConnectionManager;
@@ -22,8 +21,10 @@ public class ReponseDAO {
 
 		Connection con = ConnectionManager.getConnection();
 		String req = "select * from Reponse where idQuestion = ? ";
+
 		PreparedStatement stmt;
 		stmt = con.prepareStatement(req);
+
 		stmt.setInt(1, id);
 		ResultSet res = stmt.executeQuery();
 
@@ -46,5 +47,21 @@ public class ReponseDAO {
 		con.close();
 
 		return pListeReponse;
+	}
+	
+	public static void enregistrer(ReponseBO reponse) throws SQLException {
+		Connection con = ConnectionManager.getConnection();
+		String req = "INSERT INTO Reponse VALUES (?, ?, ?) ";
+		PreparedStatement stmt;
+		
+		stmt = con.prepareStatement(req);
+		
+		stmt.setString(1, reponse.getLibelle());
+		stmt.setInt(2, reponse.getEtat());
+		stmt.setInt(3, reponse.getQuestion().getId());
+		stmt.executeUpdate();
+		
+		stmt.close();
+		con.close();
 	}
 }
