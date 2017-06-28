@@ -68,4 +68,18 @@ public class CandidatDAO {
 
 		return listPersonnes;
 	}
+	
+	public static void enregistrer(CandidatBO candidat) throws SQLException {
+		Connection con = ConnectionManager.getConnection();
+		String req = "INSERT INTO CANDIDAT VALUES (?,?) ";
+		PreparedStatement stmt;
+		
+		stmt = con.prepareStatement(req);
+		stmt.setString(1, candidat.getNom());
+		stmt.setString(2, candidat.getPrenom());
+		stmt.executeUpdate();
+
+		stmt.close();
+		con.close();
+	}
 }
