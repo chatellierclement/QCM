@@ -35,4 +35,24 @@ public class TestDAO {
 		return listTestBO;
 	}
 	
+	public static void creationTest(TestBO test) throws SQLException {
+		
+		Connection con = ConnectionManager.getConnection();
+		String req = "INSERT INTO Test (libelle, idCategorie) VALUES (?, ?)";
+		
+		try {
+		    PreparedStatement st = con.prepareStatement(req);
+		    st.setString(1, test.getLibelle());
+		    st.setInt(2, test.getCategorie().getId());
+
+		    st.executeUpdate();
+		    st.close();
+		  } 
+		  catch (SQLException e)
+		  {
+		    throw e;
+		  }
+		
+	}
+	
 }

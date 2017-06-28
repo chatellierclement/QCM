@@ -2,8 +2,7 @@
 <%@page import="bo.CandidatBO"%>
 <%@page import="bo.TestBO"%>
 <%@page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 
 <%@include file="content.jsp"%>
 
@@ -11,9 +10,14 @@
 <title>Choix du test</title>
 </head>
 <body>
-<% 	Utilisateur sessionUtilisateur = (Utilisateur) request.getSession().getAttribute("utilisateur"); %>	
+	<% 	Utilisateur sessionUtilisateur = (Utilisateur) request.getSession().getAttribute("utilisateur"); %>	
 
 	<h1>Bienvenue <%= sessionUtilisateur.getPrenom() %> <%= sessionUtilisateur.getNom() %> </h1>
+	<hr class="major" />
+	
+	<% if("Admin".equals(sessionUtilisateur.getType())) { %>
+		<a href="<%=request.getContextPath()%>/creationTest">Création d'un test</a>
+	<% } %>
 	<hr class="major" />
 	<h3>Listes des tests</h3>
 	
@@ -25,7 +29,7 @@
 			<tr>
 				<th>Id</th>
 				<th>Libelle</th>
-				<th>Acion</th>
+				<th>Action</th>
 			</tr>
 		</thead>
 		<tbody>
