@@ -1,6 +1,5 @@
 <%@page import="bo.QuestionBO"%>
 <%@page import="java.util.List"%>
-<%@page import="bo.CandidatBO"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@include file="content.jsp"%>
