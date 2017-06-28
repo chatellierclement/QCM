@@ -11,6 +11,10 @@
 	<br/>
 	<div class="col-md-6 col-md-offset-3">
 		<form action="creationQuestion" method="post" align="center">
+			<select name="categorie">
+				<option>Categorie</option>
+			</select>
+		
 			<textarea class="input-sm form-control" name="question" placeholder="Saisissez la question"></textarea>
 	
 			<div class="panel panel-default">
