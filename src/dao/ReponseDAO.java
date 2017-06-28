@@ -36,7 +36,7 @@ public class ReponseDAO {
 			pReponse.setId(res.getInt(1));
 			pReponse.setLibelle(res.getString(2));
 			pReponse.setEtat(res.getInt(3));
-			pReponse.setIdQuestion(pQuestion);
+			pReponse.setQuestion(pQuestion);
 
 			pListeReponse.add(pReponse);
 		}
