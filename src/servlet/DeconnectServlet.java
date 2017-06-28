@@ -34,11 +34,24 @@ public class DeconnectServlet extends HttpServlet {
 		generate(request, response);
 	}
 
-	private void generate(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-		
-		req.getSession().invalidate();
-		req.getSession().removeAttribute("unCandidat");
-		resp.sendRedirect("login");
+	private void generate(HttpServletRequest req, HttpServletResponse resp)
+			throws IOException {
+		CandidatBO sessio = (CandidatBO) req.getSession().getAttribute(
+				"unCandidat");
+
+		if (sessio == null) {
+			try {
+				resp.sendRedirect("login");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		} else {
+			req.getSession().invalidate();
+			req.getSession().removeAttribute("unCandidat");
+			resp.sendRedirect("login");
+		}
 	}
 
 }

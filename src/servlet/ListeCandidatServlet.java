@@ -43,17 +43,30 @@ public class ListeCandidatServlet extends HttpServlet{
 	}
 	
 	private void generate(HttpServletRequest request, HttpServletResponse resp) {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("listeCandidat.jsp");
+		CandidatBO sessio = (CandidatBO) request.getSession().getAttribute("unCandidat");
 		
-		List<CandidatBO> listePersonne = null;
-		listePersonne = CandidatDAO.getAll();
-		
-		request.setAttribute("listePersonne", listePersonne);
-		try {
-			dispatcher.forward(request, resp);
-		} catch (ServletException | IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if(sessio == null) {
+			try {
+				resp.sendRedirect("login");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}else{
+			RequestDispatcher dispatcher = request.getRequestDispatcher("listeCandidat.jsp");
+			
+			List<CandidatBO> listePersonne = null;
+			listePersonne = CandidatDAO.getAll();
+			
+			request.setAttribute("listePersonne", listePersonne);
+			try {
+				dispatcher.forward(request, resp);
+			} catch (ServletException | IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
+		
 	}
 }

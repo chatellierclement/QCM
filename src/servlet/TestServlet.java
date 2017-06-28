@@ -22,38 +22,54 @@ import dao.TestDAO;
 @WebServlet("/test")
 public class TestServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
- 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		generate(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		generate(request, response);
 	}
 
-	private void generate(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-		RequestDispatcher dispatcher = req.getRequestDispatcher("test.jsp");
-		
-		int id = Integer.parseInt(req.getParameter("id")); 
-		
-		TestBO unTest = null;
-		try {
-			unTest = TestDAO.selectById(id);
-			
-			req.setAttribute("unTest", unTest);
-			
-			
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		
-		try {
-			dispatcher.forward(req, resp);
-		} catch (ServletException | IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	private void generate(HttpServletRequest req, HttpServletResponse resp)
+			throws IOException {
+
+		CandidatBO sessio = (CandidatBO) req.getSession().getAttribute(
+				"unCandidat");
+
+		if (sessio == null) {
+			try {
+				resp.sendRedirect("login");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		} else {
+
+			RequestDispatcher dispatcher = req.getRequestDispatcher("test.jsp");
+
+			int id = Integer.parseInt(req.getParameter("id"));
+
+			TestBO unTest = null;
+			try {
+				unTest = TestDAO.selectById(id);
+
+				req.setAttribute("unTest", unTest);
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+
+			try {
+				dispatcher.forward(req, resp);
+			} catch (ServletException | IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
-	
+
 }
