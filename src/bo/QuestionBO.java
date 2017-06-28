@@ -2,14 +2,10 @@ package bo;
 
 public class QuestionBO {
 	
-	public QuestionBO() {
 		
-	}
-	
 	private int id;
 	private String libelle;
-	private String description;
-	private TestBO idTest;
+	private CategorieBO idCategorie;
 	
 	public int getId() {
 		return id;
@@ -23,17 +19,11 @@ public class QuestionBO {
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
 	}
-	public String getDescription() {
-		return description;
+	public CategorieBO getIdCategorie() {
+		return idCategorie;
 	}
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	public TestBO getIdTest() {
-		return idTest;
-	}
-	public void setIdTest(TestBO idTest) {
-		this.idTest = idTest;
+	public void setIdCategorie(CategorieBO idCategorie) {
+		this.idCategorie = idCategorie;
 	}
 	
 	

@@ -9,7 +9,9 @@ public class ReponseBO {
 	private int id;
 	private String libelle;
 	private int etat; //0 : faux, 1 : bon 
-	private QuestionBO idQuestionBO;
+	private QuestionBO idQuestion;
+	
+	
 	public int getId() {
 		return id;
 	}
@@ -28,11 +30,11 @@ public class ReponseBO {
 	public void setEtat(int etat) {
 		this.etat = etat;
 	}
-	public QuestionBO getIdQuestionBO() {
-		return idQuestionBO;
+	public QuestionBO getIdQuestion() {
+		return idQuestion;
 	}
-	public void setIdQuestionBO(QuestionBO idQuestionBO) {
-		this.idQuestionBO = idQuestionBO;
+	public void setIdQuestion(QuestionBO idQuestion) {
+		this.idQuestion = idQuestion;
 	}
 	
 	
