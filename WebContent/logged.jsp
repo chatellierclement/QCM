@@ -17,15 +17,30 @@
 	<h3>Listes des tests</h3>
 	
 	<% List<TestBO> listTest = ((List<TestBO>) request.getAttribute("listeTest")) ; %>
-	<% if (listTest.size() != 0) { %>
-		<% for (TestBO testBO : listTest) { %>
-			<%=testBO.getId()%> <%=testBO.getLibelle() %> 
-		<% } %>
-	<% } else { %>
-		Bande de pd, vous avez pas de tests
-	<% } %>
-</body>
-</html>
+
+<div class="table-wrapper">
+	<table>
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Libelle</th>
+			</tr>
+		</thead>
+		<tbody>
+			<%
+				for (TestBO test : listTest) {
+			%>
+			<tr>
+				<td><%=test.getId()%></td>
+				<td><%=test.getLibelle()%></td>
+			</tr>
+			<%
+				}
+			%>
+
+		</tbody>
+	</table>
+</div>
 
 <!-- Elements -->
 </div>
@@ -34,3 +49,5 @@
 
 </div>
 </div>
+</body>
+</html>
