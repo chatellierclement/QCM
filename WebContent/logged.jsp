@@ -24,6 +24,7 @@
 			<tr>
 				<th>Id</th>
 				<th>Libelle</th>
+				<th>Acion</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -33,11 +34,11 @@
 			<tr>
 				<td><%=test.getId()%></td>
 				<td><%=test.getLibelle()%></td>
+				<td><a href="">Lancer le test</a>
 			</tr>
 			<%
 				}
 			%>
-
 		</tbody>
 	</table>
 </div>
