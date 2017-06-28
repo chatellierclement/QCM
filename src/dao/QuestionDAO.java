@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,7 +52,7 @@ public class QuestionDAO {
 		String req = "INSERT INTO QUESTION VALUES (?, ?) ";
 		PreparedStatement stmt;
 		
-		stmt = con.prepareStatement(req);
+		stmt = con.prepareStatement(req, Statement.RETURN_GENERATED_KEYS);
 		stmt.setString(1, question.getLibelle());
 		stmt.setInt(2, question.getCategorie().getId());
 		stmt.executeUpdate();
