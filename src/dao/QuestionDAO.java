@@ -16,10 +16,11 @@ public class QuestionDAO {
 
 	public static List<QuestionBO> selectAllByCategorie(int id) throws SQLException {
 			QuestionBO questionBO = null;
+			CategorieBO categorieBO = null;
 			List<QuestionBO> listQuestionBO = new ArrayList<QuestionBO>();
 			
 			Connection con = ConnectionManager.getConnection();
-			String req = "SELECT t.idTest, t.libelle, c.idCategorie, c.libelle, q.idQuestion, q.libelle FROM TEST t " 
+			String req = "SELECT c.idCategorie, c.libelle, q.idQuestion, q.libelle FROM TEST t " 
 					+ "INNER JOIN CATEGORIE c ON t.idCategorie = c.idCategorie "
 					+ "INNER JOIN QUESTION q ON c.idCategorie = q.idCategorie "
 					+ "WHERE t.idTest = ?";
@@ -30,8 +31,12 @@ public class QuestionDAO {
 			
 			while (res.next()) {
 				questionBO = new QuestionBO();
-				questionBO.setId(res.getInt(1));
-				questionBO.setLibelle(res.getString(2));
+				categorieBO = new CategorieBO();
+				categorieBO.setId(res.getInt(1));
+				categorieBO.setLibelle(res.getString(2));
+				questionBO.setId(res.getInt(3));
+				questionBO.setLibelle(res.getString(4));
+				questionBO.setCategorie(categorieBO);
 				listQuestionBO.add(questionBO);
 			}
 
