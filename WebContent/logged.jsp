@@ -1,3 +1,4 @@
+<%@page import="bo.Utilisateur"%>
 <%@page import="bo.CandidatBO"%>
 <%@page import="bo.TestBO"%>
 <%@page import="java.util.List"%>
@@ -10,9 +11,9 @@
 <title>Choix du test</title>
 </head>
 <body>
-<% 	CandidatBO sessio = (CandidatBO) request.getSession().getAttribute("unCandidat"); %>	
+<% 	Utilisateur sessionUtilisateur = (Utilisateur) request.getSession().getAttribute("utilisateur"); %>	
 
-	<h1>Bienvenue <%= sessio.getPrenom() %> <%= sessio.getNom() %> </h1>
+	<h1>Bienvenue <%= sessionUtilisateur.getPrenom() %> <%= sessionUtilisateur.getNom() %> </h1>
 	<hr class="major" />
 	<h3>Listes des tests</h3>
 	
