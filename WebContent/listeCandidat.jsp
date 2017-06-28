@@ -7,7 +7,7 @@
 <title>Liste des Candidats</title>
 <h1>Liste des Candidats :</h1>
 <hr class="major" />
-<% 	CandidatBO sessio = (CandidatBO) request.getSession().getAttribute("unCandidat"); %>	
+<% 	Utilisateur sessionutilisateur = (Utilisateur) request.getSession().getAttribute("utilisateur"); %>	
 <%
 	List<CandidatBO> listePersonne = ((List<CandidatBO>) request
 			.getAttribute("listePersonne"));

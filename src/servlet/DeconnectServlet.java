@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import bo.CandidatBO;
 import bo.TestBO;
+import bo.Utilisateur;
 import dao.CandidatDAO;
 import dao.TestDAO;
 
@@ -24,10 +25,6 @@ public class DeconnectServlet extends HttpServlet {
 		generate(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
@@ -36,10 +33,9 @@ public class DeconnectServlet extends HttpServlet {
 
 	private void generate(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
-		CandidatBO sessio = (CandidatBO) req.getSession().getAttribute(
-				"unCandidat");
+		Utilisateur sessionUtilisateur = (Utilisateur) req.getSession().getAttribute("utilisateur");
 
-		if (sessio == null) {
+		if (sessionUtilisateur == null) {
 			try {
 				resp.sendRedirect("login");
 			} catch (IOException e) {
@@ -49,7 +45,7 @@ public class DeconnectServlet extends HttpServlet {
 
 		} else {
 			req.getSession().invalidate();
-			req.getSession().removeAttribute("unCandidat");
+			req.getSession().removeAttribute("utilisateur");
 			resp.sendRedirect("login");
 		}
 	}

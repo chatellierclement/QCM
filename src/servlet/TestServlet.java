@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import bo.CandidatBO;
 import bo.QuestionBO;
 import bo.TestBO;
+import bo.Utilisateur;
 import dao.CandidatDAO;
 import dao.QuestionDAO;
 import dao.TestDAO;
@@ -38,10 +39,9 @@ public class TestServlet extends HttpServlet {
 	private void generate(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
 
-		CandidatBO sessio = (CandidatBO) req.getSession().getAttribute(
-				"unCandidat");
+		Utilisateur sessionUtilisateur = (Utilisateur) req.getSession().getAttribute("utilisateur");
 
-		if (sessio == null) {
+		if (sessionUtilisateur == null) {
 			try {
 				resp.sendRedirect("login");
 			} catch (IOException e) {
