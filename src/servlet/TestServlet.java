@@ -12,8 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import bo.CandidatBO;
+import bo.QuestionBO;
 import bo.TestBO;
 import dao.CandidatDAO;
+import dao.QuestionDAO;
 import dao.TestDAO;
 
 /**
@@ -53,9 +55,9 @@ public class TestServlet extends HttpServlet {
 
 			int id = Integer.parseInt(req.getParameter("id"));
 
-			TestBO unTest = null;
+			List<QuestionBO> unTest = null;
 			try {
-				unTest = TestDAO.selectById(id);
+				unTest = QuestionDAO.selectAllByCategorie(id);
 
 				req.setAttribute("unTest", unTest);
 			} catch (SQLException e1) {
