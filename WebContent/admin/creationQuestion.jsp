@@ -6,7 +6,7 @@
 <html>
 <head>
 	<%@include file="../header.jsp" %>
-	<title>Creation d'un QCM</title>
+	<title>Creation d'une question</title>
 </head>
 <body>
 	<h1 align="center">Création d'une question</h1>
