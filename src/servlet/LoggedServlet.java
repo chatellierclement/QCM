@@ -16,6 +16,7 @@ import org.apache.log4j.Logger;
 
 import bo.CandidatBO;
 import bo.TestBO;
+import bo.Utilisateur;
 import dao.TestDAO;
 
 @WebServlet("/logged")
@@ -36,9 +37,9 @@ public class LoggedServlet extends HttpServlet {
 	}
 	
 	private void generate(HttpServletRequest req, HttpServletResponse resp) {
-		CandidatBO sessio = (CandidatBO) req.getSession().getAttribute("unCandidat");
+		Utilisateur sessionUtilisateur = (Utilisateur) req.getSession().getAttribute("utilisateur");
 		
-		if(sessio == null) {
+		if(sessionUtilisateur == null) {
 			try {
 				resp.sendRedirect("login");
 			} catch (IOException e) {
