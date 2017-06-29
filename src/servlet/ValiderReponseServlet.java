@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import bo.ReponseUtiBO;
+import bo.Utilisateur;
+
 @WebServlet ( "/validerReponse" )
 public class ValiderReponseServlet extends HttpServlet {
 	
@@ -26,7 +29,10 @@ public class ValiderReponseServlet extends HttpServlet {
 	
 	private void generate(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		//String value = req.getParameter("demo-priority");
+		Utilisateur u = (Utilisateur) req.getSession().getAttribute("utilisateur");		
+		//ReponseUtiBO.enregistrerReponse(value, u.getId());		
+		
 		String id = req.getParameter("idTest"); 
-		resp.sendRedirect("test?idTest=" + id);
+		resp.sendRedirect("test?idTest=" + id);	
 	}
 }
