@@ -39,6 +39,7 @@ public class LoginServlet extends HttpServlet {
 			if(utilisateur != null) {
 				HttpSession session = request.getSession();
 				session.setAttribute( "utilisateur", utilisateur );
+				session.setMaxInactiveInterval(60*60);
 				response.sendRedirect("logged");
 
 			} else {
