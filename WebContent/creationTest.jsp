@@ -2,10 +2,10 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@include file="content.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
-	<%@include file="../header.jsp" %>
 	<title>Creation d'un QCM</title>
 </head>
 <body>
@@ -27,5 +27,13 @@
 			<button type="submit" class="btn btn-primary">Valider</button>
 		</form>
 	</div>
+
+<!-- Elements -->
+</div>
+
+</section>
+
+</div>
+</div>
 </body>
 </html>

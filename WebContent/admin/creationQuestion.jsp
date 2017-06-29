@@ -2,10 +2,10 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@include file="../content.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
-	<%@include file="../header.jsp" %>
 	<title>Creation d'une question</title>
 </head>
 <body>
@@ -37,6 +37,7 @@
 						<input class="input-sm form-control" type="text" name="rep" placeholder="Saisissez une réponse à la question" />
 					</div>
 			   	 	<div class="col-md-2">
+			   	 	<br>
 			  			<button id="btnAjout" type="button" class="btn btn-primary btn-sm">+</button>
 			  		</div>
 			  	</div>
