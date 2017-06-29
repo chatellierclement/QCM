@@ -38,13 +38,15 @@ public class TestDAO {
 	public static void Editiontest(TestBO test) throws SQLException {
 		Connection con = ConnectionManager.getConnection();
 		String req = "UPDATE Test SET libelle = ?,"
-				+ "idCategorie = ? WHERE idTest = ?";
+				+ "idCategorie = ?, nbQuestion = ?, duree = ? WHERE idTest = ?";
 		
 		try {
 			PreparedStatement st = con.prepareStatement(req);
 			st.setString(1, test.getLibelle());
 			st.setInt(2, test.getCategorie().getId());
-			st.setInt(3, test.getId());
+			st.setInt(3, test.getNbQuestion());
+			st.setInt(4, test.getDuree());
+			st.setInt(5, test.getId());
 			
 			st.executeUpdate();
 			st.close();
@@ -67,6 +69,8 @@ public class TestDAO {
 			unTest.setLibelle(res.getString(2));
 			uneCategorie.setId(res.getInt(3));
 			unTest.setCategorie(uneCategorie);
+			unTest.setNbQuestion(res.getInt(4));
+			unTest.setDuree(res.getInt(5));
 		}
 
 		res.close();
@@ -94,12 +98,14 @@ public class TestDAO {
 	public static void creationTest(TestBO test) throws SQLException {
 		
 		Connection con = ConnectionManager.getConnection();
-		String req = "INSERT INTO Test (libelle, idCategorie) VALUES (?, ?)";
+		String req = "INSERT INTO Test (libelle, idCategorie, nbQuestion, duree) VALUES (?, ?, ?, ?)";
 		
 		try {
 		    PreparedStatement st = con.prepareStatement(req);
 		    st.setString(1, test.getLibelle());
 		    st.setInt(2, test.getCategorie().getId());
+		    st.setInt(3, test.getNbQuestion());
+		    st.setInt(4, test.getDuree());
 
 		    st.executeUpdate();
 		    st.close();

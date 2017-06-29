@@ -5,6 +5,8 @@ public class TestBO {
 	private int id;
 	private String libelle;
 	private CategorieBO categorie;
+	private int nbQuestion;
+	private int duree;
 	
 	public TestBO() {
 		
@@ -33,6 +35,21 @@ public class TestBO {
 	public void setCategorie(CategorieBO categorie) {
 		this.categorie = categorie;
 	}
-	
+
+	public int getNbQuestion() {
+		return nbQuestion;
+	}
+
+	public void setNbQuestion(int nbQuestion) {
+		this.nbQuestion = nbQuestion;
+	}
+
+	public int getDuree() {
+		return duree;
+	}
+
+	public void setDuree(int duree) {
+		this.duree = duree;
+	}
 	
 }

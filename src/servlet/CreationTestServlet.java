@@ -30,15 +30,19 @@ public class CreationTestServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String libelle = request.getParameter("libelle");
 		int categorieId = Integer.parseInt(request.getParameter("categorieId"));
-	
+		int nbQuestion = Integer.parseInt(request.getParameter("nbQuestion"));
+		int duree = Integer.parseInt(request.getParameter("duree"));
+		
 		TestBO unTest = new TestBO();
 		CategorieBO uneCategorie = new CategorieBO();
 		unTest.setLibelle(libelle);
 		uneCategorie.setId(categorieId);
 		unTest.setCategorie(uneCategorie);
+		unTest.setNbQuestion(nbQuestion);
+		unTest.setDuree(duree);
+		
 		try {
 			TestDAO.creationTest(unTest);
-			
 			response.sendRedirect("logged");
 		} catch (SQLException e) {
 			e.printStackTrace();
