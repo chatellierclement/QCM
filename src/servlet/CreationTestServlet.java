@@ -38,6 +38,8 @@ public class CreationTestServlet extends HttpServlet {
 		unTest.setCategorie(uneCategorie);
 		try {
 			TestDAO.creationTest(unTest);
+			
+			response.sendRedirect("logged");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
