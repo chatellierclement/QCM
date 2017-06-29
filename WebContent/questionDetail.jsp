@@ -54,9 +54,19 @@
 			</tbody>
 		</table>
 	</div>
-	<center><input class="button default" type="submit" value="Envoyer la réponse" /></center>	
+	<center><input id="btn" class="button default" type="button" value="Envoyer la réponse" /></center>	
 </form>
 
+<script>
+	$('#btn').click(function () {  		
+		if ($('input[type=radio]:checked').length == 1) {
+			this.form.submit();
+		} else {
+			alert("Veuillez repondre à la question");
+		}
+	});
+
+</script>
 <!-- Elements -->
 </div>
 
