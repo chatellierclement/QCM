@@ -54,8 +54,8 @@ public class ReponseUtilDAO {
 		}
 	}
 	
-	public static List<String> verifReponse(int id)	throws SQLException {
-		List<String> listeValue = new ArrayList<String>();
+	public static List<Integer> verifReponse(int id)	throws SQLException {
+		List<Integer> listeValue = new ArrayList<Integer>();
 		Connection con = ConnectionManager.getConnection();
 		String req = "select rep.idQuestion from ReponseUti r,"
 				+ " Reponse rep where r.idReponse = rep.idReponse and r.idUtilisateur = ?";
@@ -67,7 +67,7 @@ public class ReponseUtilDAO {
 		ResultSet res = stmt.executeQuery();
 
 		while (res.next()) {
-			listeValue.add(res.getString(1));
+			listeValue.add(res.getInt(1));
 		}
 
 		res.close();
