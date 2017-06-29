@@ -10,6 +10,7 @@ import java.util.List;
 import bo.QuestionBO;
 import bo.ReponseBO;
 import bo.ReponseUtiBO;
+import bo.TestBO;
 import conf.ConnectionManager;
 
 public class ReponseUtilDAO {
@@ -32,4 +33,49 @@ public class ReponseUtilDAO {
 		con.close();
 
 	}
+	// a modifier !
+	public static void update(TestBO test) throws SQLException {
+		Connection con = ConnectionManager.getConnection();
+		String req = "UPDATE Test SET libelle = ?,"
+				+ "idCategorie = ?, nbQuestion = ?, duree = ? WHERE idTest = ?";
+		
+		try {
+			PreparedStatement st = con.prepareStatement(req);
+			st.setString(1, test.getLibelle());
+			st.setInt(2, test.getCategorie().getId());
+			st.setInt(3, test.getNbQuestion());
+			st.setInt(4, test.getDuree());
+			st.setInt(5, test.getId());
+			
+			st.executeUpdate();
+			st.close();
+		} catch (SQLException e) {
+			throw e;
+		}
+	}
+	
+	public static List<String> verifReponse(int id)	throws SQLException {
+		List<String> listeValue = new ArrayList<String>();
+		Connection con = ConnectionManager.getConnection();
+		String req = "select rep.idQuestion from ReponseUti r,"
+				+ " Reponse rep where r.idReponse = rep.idReponse and r.idUtilisateur = ?";
+
+		PreparedStatement stmt;
+		stmt = con.prepareStatement(req);
+
+		stmt.setInt(1, id);
+		ResultSet res = stmt.executeQuery();
+
+		while (res.next()) {
+			listeValue.add(res.getString(1));
+		}
+
+		res.close();
+		stmt.close();
+		con.close();
+
+		return listeValue;
+	}
+	
+	
 }
