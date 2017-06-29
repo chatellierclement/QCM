@@ -29,16 +29,22 @@
 			<tr>
 				<td><%=pTest.get(i).getCategorie().getLibelle()%></td>
 				<td>Question : <%=i+1 %></td>
-					<td><a href="<%=request.getContextPath()%>/question?idTest=<%=request.getAttribute("idTest")%>&id=<%=pTest.get(i).getId() %>" class="button special">Répondre</a></td>
-					
 					<% List<Integer> verifReponse = ((List<Integer>) request.getAttribute("verifReponse")); %>
-					<% boolean bool = false; %>
-					<% for (Integer value : verifReponse) {
+					<% boolean bool = false; 
+						String button = "Repondre";
+						String couleur = "special";
+					for (Integer value : verifReponse) {
 						if (value.equals(pTest.get(i).getId())) { 
-							bool = true;						
+							bool = true;
+							button = "Modifier";
+							couleur = "default";
 						 } 
 					 } 
-						if (bool) { %>
+					%>
+					<td><a href="<%=request.getContextPath()%>/question?idTest=<%=request.getAttribute("idTest")%>&id=<%=pTest.get(i).getId() %>" class="button <%= couleur %>"><%= button %></a></td>
+					
+					
+					<%	if (bool) { %>
 							<td><i class="fa fa-check-square-o" aria-hidden="true"></i></td>	
 						<% } else { %>
 							<td></td>
