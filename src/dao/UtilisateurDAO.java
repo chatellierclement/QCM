@@ -20,7 +20,7 @@ public class UtilisateurDAO {
 		try {
 
 			Connection con = ConnectionManager.getConnection();
-			String data = "SELECT * FROM UTILISATEURS";
+			String data = "SELECT * FROM UTILISATEUR";
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(data);
 			

@@ -13,7 +13,8 @@
 		<li><a href="<%=request.getContextPath()%>/listeCandidat">Liste des Candidats</a></li>
 		
 		<% if("Admin".equals(sessionUtilisateur2.getType())) { %>
-				<li><a href="surprise.jsp">Création d'un test</a></li>
+				<li><a href="<%=request.getContextPath()%>/creationTest">Création d'un test</a></li>
+				<li><a href="<%=request.getContextPath()%>/creationQuestion">Création d'une question</a></li>
 		<% } %>
 
 	</ul>
