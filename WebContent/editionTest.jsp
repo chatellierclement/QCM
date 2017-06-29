@@ -31,7 +31,7 @@
 			</select>
 			
 			<br/>
-			<button type="submit" class="btn btn-primary">Valider</button>
+			<button type="submit" class="button special">Valider</button>
 		</form>
 	</div>
 	

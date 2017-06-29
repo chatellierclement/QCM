@@ -56,14 +56,13 @@
 			  <div class="modal-dialog" role="document">
 			    <div class="modal-content">
 			      <div class="modal-header">
-			        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+			        <h4 class="modal-title" id="myModalLabel"><a href="<%=request.getContextPath()%>/suppressionTest?id=<%=test.getId()%>" class="button special">SUPPRIMER</a></li></h4>
 			      </div>
 			      <div class="modal-body">
 			      Voulez-vous supprimer le test ?
 			      </div>
 			      <div class="modal-footer">
 			        <a data-dismiss="modal">Close</a>
-			        <a href="<%=request.getContextPath()%>/suppressionTest?id=<%=test.getId()%>">Supprimer le test</a>
 			      </div>
 			    </div>
 			  </div>
