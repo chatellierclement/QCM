@@ -22,13 +22,13 @@
 		</thead>
 		<tbody>
 			<%
-				for (QuestionBO test : pTest) {
+				for(int i =0; i < pTest.size(); i++){
 			%>
 			<tr>
-				<td><%=test.getCategorie().getLibelle()%></td>
-				<td>Question : <%=test.getId()%></td>
+				<td><%=pTest.get(i).getCategorie().getLibelle()%></td>
+				<td>Question : <%=i+1 %></td>
 <%-- 				<td><a href="<%=request.getContextPath()%>/test?id=<%=test.getId()%>">Lancer le test</a>
- --%>				<td><a href="<%=request.getContextPath()%>/question?id=<%=test.getId() %>" class="button special">Répondre</a></td>
+ --%>				<td><a href="<%=request.getContextPath()%>/question?id=<%=pTest.get(i).getId() %>" class="button special">Répondre</a></td>
 				
 			</tr>
 			<%
