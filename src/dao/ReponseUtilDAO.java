@@ -9,43 +9,27 @@ import java.util.List;
 
 import bo.QuestionBO;
 import bo.ReponseBO;
+import bo.ReponseUtiBO;
 import conf.ConnectionManager;
 
 public class ReponseUtilDAO {
 
-	public static List<ReponseBO> selectAllByQuestion(int id)
+	public static void enregistrerReponse(int idReponse, int idUtilisateur)
 			throws SQLException {
-		ReponseBO pReponse = null;
-		QuestionBO pQuestion = null;
-		List<ReponseBO> pListeReponse = new ArrayList<ReponseBO>();
 
 		Connection con = ConnectionManager.getConnection();
-		String req = "select * from Reponse where idQuestion = ? ";
+		String req = "INSERT INTO ReponseUti (idUtilisateur, idReponse) VALUES (?, ?)";
 
 		PreparedStatement stmt;
 		stmt = con.prepareStatement(req);
 
-		stmt.setInt(1, id);
-		ResultSet res = stmt.executeQuery();
+		stmt.setInt(1, idUtilisateur);
+		stmt.setInt(2, idReponse);
+		
+		stmt.executeUpdate();
 
-		while (res.next()) {
-			pReponse = new ReponseBO();
-			pQuestion = new QuestionBO();
-
-			pQuestion.setId(id);
-
-			pReponse.setId(res.getInt(1));
-			pReponse.setLibelle(res.getString(2));
-			pReponse.setEtat(res.getInt(3));
-			pReponse.setQuestion(pQuestion);
-
-			pListeReponse.add(pReponse);
-		}
-
-		res.close();
 		stmt.close();
 		con.close();
 
-		return pListeReponse;
 	}
 }
