@@ -64,4 +64,17 @@ public class ReponseDAO {
 		stmt.close();
 		con.close();
 	}
+	
+	public static void supprimerByIdQuestion(int idQuestion) throws SQLException {
+		Connection con = ConnectionManager.getConnection();
+		String req = "DELETE FROM REPONSE WHERE idQuestion = ? ";
+		PreparedStatement stmt;
+		
+		stmt = con.prepareStatement(req);
+		stmt.setInt(1, idQuestion);
+		stmt.executeUpdate();
+
+		stmt.close();
+		con.close();
+	}
 }

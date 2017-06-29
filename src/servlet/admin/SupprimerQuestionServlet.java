@@ -42,7 +42,7 @@ public class SupprimerQuestionServlet extends HttpServlet {
 
 	protected void doWork(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		if(request.getParameter("id") != null && !"".equals(request.getParameter("id"))) {
+		if(request.getParameter("id") != null) {
 
 			int idQuestion = Integer.parseInt(request.getParameter("id")) ;
 			

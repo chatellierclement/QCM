@@ -107,6 +107,9 @@ public class QuestionDAO {
 	}
 	
 	public static void supprimer(int idQuestion) throws SQLException {
+		//On supprime d'abord les réponses
+		ReponseDAO.supprimerByIdQuestion(idQuestion) ;
+		
 		Connection con = ConnectionManager.getConnection();
 		String req = "DELETE FROM QUESTION WHERE idQuestion = ? ";
 		PreparedStatement stmt;
