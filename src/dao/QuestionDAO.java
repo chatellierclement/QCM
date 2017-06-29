@@ -13,6 +13,42 @@ import bo.QuestionBO;
 import conf.ConnectionManager;
 
 public class QuestionDAO {
+	
+	public static List<QuestionBO> getAll(){
+
+		List<QuestionBO> listeQuestions = new ArrayList<QuestionBO>();
+		try {
+
+			Connection con = ConnectionManager.getConnection();
+			String data = "SELECT * FROM QUESTION";
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(data);
+			
+			while(rs.next())
+			{
+				QuestionBO pQuestion = new QuestionBO();
+				pQuestion.setId(rs.getInt(1));
+				pQuestion.setLibelle(rs.getString(2));
+				
+				CategorieBO pCategorie = new CategorieBO() ;
+				pCategorie.setId(rs.getInt(3));
+				
+				pQuestion.setCategorie(pCategorie) ;
+				
+				listeQuestions.add(pQuestion);
+			}
+			
+			rs.close();
+			stmt.close();
+			con.close();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return listeQuestions;
+	}
 
 	public static List<QuestionBO> selectAllByCategorie(int id) throws SQLException {
 		QuestionBO questionBO = null;

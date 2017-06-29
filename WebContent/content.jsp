@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" href="assets/css/main.css" />
-
+<%@include file="header.jsp"%>
 </head>
 <body>
 	<%@include file="wrapper.jsp"%>
