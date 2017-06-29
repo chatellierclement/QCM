@@ -18,7 +18,7 @@
 <hr class="major" />
 <% 	Utilisateur sessionUtilisateur = (Utilisateur) request.getSession().getAttribute("utilisateur"); %>	
 
-<form>
+<form action="" method="post">
 	<div class="table-wrapper">
 		<table>
 			<thead>
