@@ -10,7 +10,7 @@
 <%
 	List<QuestionBO> pTest = ((List<QuestionBO>) request.getAttribute("unTest"));
 %>
-	<h1>Bienvenue sur le test Monsieur <%=sessionUtilisateur.getNom() %> - <%=sessionUtilisateur.getPrenom() %></h1>
+	<h1>Bienvenue sur le test <%=sessionUtilisateur.getNom() %> - <%=sessionUtilisateur.getPrenom() %></h1>
 
 <div class="table-wrapper">
 	<table>
