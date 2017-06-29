@@ -9,9 +9,7 @@
 <title>Choix du test</title>
 </head>
 <body>
-	<%
-		Utilisateur sessionUtilisateur = (Utilisateur) request.getSession().getAttribute("utilisateur");
-	%>	
+	<% 	Utilisateur sessionUtilisateur = (Utilisateur) request.getSession().getAttribute("utilisateur"); %>	
 
 	<h1>Bienvenue <%= sessionUtilisateur.getPrenom() %> <%= sessionUtilisateur.getNom() %> </h1>
 	<hr class="major" />
