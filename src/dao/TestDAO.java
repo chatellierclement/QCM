@@ -35,6 +35,47 @@ public class TestDAO {
 		return listTestBO;
 	}
 	
+	public static void Editiontest(TestBO test) throws SQLException {
+		Connection con = ConnectionManager.getConnection();
+		String req = "UPDATE Test SET libelle = ?,"
+				+ "idCategorie = ? WHERE idTest = ?";
+		
+		try {
+			PreparedStatement st = con.prepareStatement(req);
+			st.setString(1, test.getLibelle());
+			st.setInt(2, test.getCategorie().getId());
+			st.setInt(3, test.getId());
+			
+			st.executeUpdate();
+			st.close();
+		} catch (SQLException e) {
+			throw e;
+		}
+	}
+	
+	public static TestBO selectTestById(int idTest) throws SQLException {
+		TestBO unTest = new TestBO();
+		CategorieBO uneCategorie = new CategorieBO();
+		Connection con = ConnectionManager.getConnection();
+		String req = "SELECT * FROM test WHERE idTest = ?";
+		PreparedStatement st = con.prepareStatement(req);
+		st.setInt(1, idTest);
+		ResultSet res = st.executeQuery();
+		
+		while (res.next()) {
+			unTest.setId(res.getInt(1));
+			unTest.setLibelle(res.getString(2));
+			uneCategorie.setId(res.getInt(3));
+			unTest.setCategorie(uneCategorie);
+		}
+
+		res.close();
+		st.close();
+		con.close();
+		
+		return unTest;
+	}
+	
 	public static void SupprimerTest(int idTest) throws SQLException {
 		Connection con = ConnectionManager.getConnection();
 		String req = "DELETE FROM Test WHERE idTest = ?";

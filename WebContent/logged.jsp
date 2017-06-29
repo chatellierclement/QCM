@@ -45,7 +45,7 @@
 					&nbsp
 					<a href="<%=request.getContextPath()%>/suppressionTest?id=<%=test.getId()%>">Suprimer le test</a>
 					&nbsp
-					<a href="<%=request.getContextPath()%>/">Editer le test</a>
+					<a href="<%=request.getContextPath()%>/editionTest?id=<%=test.getId()%>">Editer le test</a>
 					<% } %>
 				</td>
 			</tr>
