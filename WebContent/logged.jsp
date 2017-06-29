@@ -45,14 +45,14 @@
 					<a href="<%=request.getContextPath()%>/test?id=<%=test.getId()%>">Lancer le test</a>
 					<% if("Admin".equals(sessionUtilisateur.getType())) { %>
 					&nbsp
-					<a data-toggle="modal" data-target="#myModal" href="#">Supprimer le test</a>
+					<a data-toggle="modal" data-target="#myModal<%=test.getId() %>" href="#">Supprimer le test</a>
 					&nbsp
 					<a href="<%=request.getContextPath()%>/editionTest?id=<%=test.getId()%>">Editer le test</a>
 					<% } %>
 				</td>
 			</tr>
 			<!-- Modal -->
-			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal fade" id="myModal<%=test.getId() %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 			  <div class="modal-dialog" role="document">
 			    <div class="modal-content">
 			      <div class="modal-header">
