@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bo.ReponseUtiBO;
+import dao.ReponseUtilDAO;
 import bo.Utilisateur;
 
 @WebServlet ( "/validerReponse" )
@@ -28,9 +29,14 @@ public class ValiderReponseServlet extends HttpServlet {
 	}
 	
 	private void generate(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-		//String value = req.getParameter("demo-priority");
+		int idReponse = Integer.parseInt(req.getParameter("demo-priority"));
 		Utilisateur u = (Utilisateur) req.getSession().getAttribute("utilisateur");		
-		//ReponseUtiBO.enregistrerReponse(value, u.getId());		
+		try {
+			ReponseUtilDAO.enregistrerReponse(idReponse, u.getId());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
 		
 		String id = req.getParameter("idTest"); 
 		resp.sendRedirect("test?idTest=" + id);	
