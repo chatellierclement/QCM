@@ -9,11 +9,11 @@
 	<title>Creation d'un QCM</title>
 </head>
 <body>
-	<h1 align="center">Création d'un QCM</h1>
+	<h1 align="center">Création d'un Test</h1>
 	<br/>
 	<div class="col-md-6 col-md-offset-3">
 		<form action="creationTest" method="post" align="center">
-			<input class="input-sm form-control" type="text" name="libelle" placeholder="Saisissez le nom du QCM" />
+			<input class="input-sm form-control" type="text" name="libelle" placeholder="Saisissez le nom du test" />
 			
 			<% List<CategorieBO> lesCategories = ((List<CategorieBO>) request.getAttribute("lesCategories")); %>
 			
@@ -24,7 +24,7 @@
 			</select>
 			
 			<br/>
-			<button type="submit" class="btn btn-primary">Valider</button>
+			<button type="submit" class="button special">Valider</button>
 		</form>
 	</div>
 

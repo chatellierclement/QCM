@@ -105,4 +105,20 @@ public class QuestionDAO {
 		
 		return dernierId;
 	}
+	
+	public static void supprimer(int idQuestion) throws SQLException {
+		//On supprime d'abord les réponses
+		ReponseDAO.supprimerByIdQuestion(idQuestion) ;
+		
+		Connection con = ConnectionManager.getConnection();
+		String req = "DELETE FROM QUESTION WHERE idQuestion = ? ";
+		PreparedStatement stmt;
+		
+		stmt = con.prepareStatement(req);
+		stmt.setInt(1, idQuestion);
+		stmt.executeUpdate();
+
+		stmt.close();
+		con.close();
+	}
 }

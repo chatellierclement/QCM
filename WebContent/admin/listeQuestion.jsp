@@ -31,7 +31,7 @@
 						<td><%= question.getId() %></td>
 						<td><%= question.getLibelle() %></td>
 						<td><a href="#">Editer</a></td>
-						<td>X</td>
+						<td><a href="supprimerQuestion?id=<%= question.getId() %>">Supprimer</a></td>
 					</tr>
 					<% } %>
 				<% } %>
