@@ -6,7 +6,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<% 	Utilisateur sessionUtilisateur = (Utilisateur) request.getSession().getAttribute("utilisateur"); %>	
+<%
+	Utilisateur sessionUtilisateur = (Utilisateur) request.getSession().getAttribute("utilisateur");
+%>	
 <%
 	List<QuestionBO> pTest = ((List<QuestionBO>) request.getAttribute("unTest"));
 %>

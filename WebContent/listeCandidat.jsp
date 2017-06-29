@@ -6,10 +6,12 @@
 <title>Liste des Candidats</title>
 <h1>Liste des Candidats :</h1>
 <hr class="major" />
-<% 	Utilisateur sessionutilisateur = (Utilisateur) request.getSession().getAttribute("utilisateur"); %>	
 <%
-	List<Utilisateur> lesUtilisateurs = ((List<Utilisateur>) request.getAttribute("lesUtilisateurs"));
-%>
+	Utilisateur sessionutilisateur = (Utilisateur) request.getSession().getAttribute("utilisateur");
+%>	
+<%
+		List<Utilisateur> lesUtilisateurs = ((List<Utilisateur>) request.getAttribute("lesUtilisateurs"));
+	%>
 <div class="table-wrapper">
 	<table>
 		<thead>

@@ -6,7 +6,7 @@
 <%@include file="content.jsp"%>
 <%
 	List<ReponseBO> pReponse = ((List<ReponseBO>) request
-			.getAttribute("pReponse"));
+	.getAttribute("pReponse"));
 %>
 <%
 	List<QuestionBO> pQuestion = ((List<QuestionBO>) request.getAttribute("pQuestion"));
@@ -14,9 +14,11 @@
 
 
 <title>Liste des Réponses</title>
-<h1>Question : <%= pReponse.get(0).getQuestion().getId() %></h1>
+<h1>Question : <%=pReponse.get(0).getQuestion().getId()%></h1>
 <hr class="major" />
-<% 	Utilisateur sessionUtilisateur = (Utilisateur) request.getSession().getAttribute("utilisateur"); %>	
+<%
+	Utilisateur sessionUtilisateur = (Utilisateur) request.getSession().getAttribute("utilisateur");
+%>	
 
 <form action="" method="post">
 	<div class="table-wrapper">

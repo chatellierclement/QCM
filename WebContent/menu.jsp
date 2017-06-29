@@ -1,6 +1,8 @@
 <%@page import="bo.Utilisateur"%>
 
-<% 	Utilisateur sessionUtilisateur2 = (Utilisateur) request.getSession().getAttribute("utilisateur"); %>	
+<%
+	Utilisateur sessionUtilisateur2 = (Utilisateur) request.getSession().getAttribute("utilisateur");
+%>	
 <!-- Menu -->
 <nav id="menu">
 	<header class="major">
