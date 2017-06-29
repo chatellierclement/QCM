@@ -33,6 +33,25 @@ public class ReponseUtilDAO {
 		con.close();
 
 	}
+	
+	public static void updateReponse(int idReponse, int idUtilisateur)
+			throws SQLException {
+
+		Connection con = ConnectionManager.getConnection();
+		String req = "UPDATE ReponseUti SET idReponse = ? WHERE idUtilisateur = ?";
+
+		PreparedStatement stmt;
+		stmt = con.prepareStatement(req);
+
+		stmt.setInt(2, idUtilisateur);
+		stmt.setInt(1, idReponse);
+		
+		stmt.executeUpdate();
+
+		stmt.close();
+		con.close();
+
+	}
 	// a modifier !
 	public static void update(TestBO test) throws SQLException {
 		Connection con = ConnectionManager.getConnection();

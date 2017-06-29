@@ -34,7 +34,11 @@ public class ValiderReponseServlet extends HttpServlet {
 		int idReponse = Integer.parseInt(req.getParameter("demo-priority"));
 		Utilisateur u = (Utilisateur) req.getSession().getAttribute("utilisateur");		
 		try {
-			ReponseUtilDAO.enregistrerReponse(idReponse, u.getId());
+			if ("ajout".equals(req.getParameter("action"))) {
+				ReponseUtilDAO.enregistrerReponse(idReponse, u.getId());
+			} else if ("modifier".equals(req.getParameter("action"))) {
+				ReponseUtilDAO.updateReponse(idReponse, u.getId());
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

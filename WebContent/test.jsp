@@ -33,15 +33,17 @@
 					<% boolean bool = false; 
 						String button = "Repondre";
 						String couleur = "special";
+						String action = "ajout";
 					for (Integer value : verifReponse) {
 						if (value.equals(pTest.get(i).getId())) { 
 							bool = true;
 							button = "Modifier";
 							couleur = "default";
+							action = "modifier";
 						 } 
 					 } 
 					%>
-					<td><a href="<%=request.getContextPath()%>/question?idTest=<%=request.getAttribute("idTest")%>&id=<%=pTest.get(i).getId() %>" class="button <%= couleur %>"><%= button %></a></td>
+					<td><a href="<%=request.getContextPath()%>/question?idTest=<%=request.getAttribute("idTest")%>&id=<%=pTest.get(i).getId() %>&action=<%=action %>" class="button <%= couleur %>"><%= button %></a></td>
 					
 					
 					<%	if (bool) { %>
