@@ -16,10 +16,8 @@
 	<table>
 		<thead>
 			<tr>
-				<th>Id</th>
 				<th>Nom</th>
 				<th>Prenom</th>
-				<th>Type</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -27,11 +25,8 @@
 				for (Utilisateur utilisateur : lesUtilisateurs) {
 			%>
 			<tr>
-
-				<td><%=utilisateur.getId()%></td>
 				<td><%=utilisateur.getNom()%></td>
 				<td><%=utilisateur.getPrenom()%></td>
-				<td><%=utilisateur.getType() %>
 			</tr>
 			<%
 				}

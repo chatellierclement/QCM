@@ -20,16 +20,17 @@ public class UtilisateurDAO {
 		try {
 
 			Connection con = ConnectionManager.getConnection();
-			String data = "SELECT * FROM UTILISATEUR";
+			String data = "SELECT * FROM UTILISATEUR where TYPE = 'Candidat'";
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(data);
 			
 			while(rs.next())
 			{
 				Utilisateur utilisateur = new Utilisateur();
-				utilisateur.setNom(rs.getString(1));
-				utilisateur.setPrenom((rs.getString(2)));
-				utilisateur.setType(rs.getString(3));
+				utilisateur.setId(rs.getInt(1));
+				utilisateur.setNom(rs.getString(2));
+				utilisateur.setPrenom((rs.getString(3)));
+				utilisateur.setType(rs.getString(4));
 				lesUtilisateurs.add(utilisateur);
 			}
 			
