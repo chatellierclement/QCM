@@ -13,8 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import bo.CategorieBO;
 import bo.TestBO;
+import bo.Utilisateur;
 import dao.CategorieDAO;
 import dao.TestDAO;
+import dao.UtilisateurDAO;
 
 /**
  * Servlet implementation class CreationTest
@@ -55,7 +57,11 @@ public class CreationTestServlet extends HttpServlet {
 		List<CategorieBO> lesCategories = null;
 		lesCategories = CategorieDAO.getAll();
 		
+		List<Utilisateur> lesUtilisateurs = null;
+		lesUtilisateurs = UtilisateurDAO.getAll();
+		
 		req.setAttribute("lesCategories", lesCategories);
+		req.setAttribute("lesUtilisateurs", lesUtilisateurs);
 		
 		try {
 			dispatcher.forward(req, resp);

@@ -16,7 +16,8 @@
 			<input class="input-sm form-control" type="text" name="libelle" placeholder="Saisissez le nom du test" />
 			
 			<% List<CategorieBO> lesCategories = ((List<CategorieBO>) request.getAttribute("lesCategories")); %>
-			
+			<% List<Utilisateur> lesUtilisateurs = ((List<Utilisateur>) request.getAttribute("lesUtilisateurs")); %>
+
 			<select id="select" name="categorieId">
 				<% for(CategorieBO uneCategorie : lesCategories) { %>
   					<option value="<%= uneCategorie.getId()%>"><%= uneCategorie.getLibelle() %></option> 
@@ -26,6 +27,15 @@
 			<input class="input-sm form-control" type="numeric" name="nbQuestion" placeholder="Nombre de question" />
 			
 			<input class="input-sm form-control" type="numeric" name="duree" placeholder="Duree en min" />
+			
+			<h2>Ajouter les utilisateurs au test</h2>
+			
+			<% for(Utilisateur unUtilisateur : lesUtilisateurs) { %>
+				<label>
+					<input type="checkbox" id="checkBox<%=unUtilisateur.getId() %>" value="<%= unUtilisateur.getId()%>"/>
+					<%=unUtilisateur.getNom()%>  <%=unUtilisateur.getPrenom() %>
+				</label>
+			<% } %>
 			
 			<br/>
 			<button type="submit" class="button special">Valider</button>
