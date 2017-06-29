@@ -23,6 +23,10 @@
 				<% } %>
 			</select>
 			
+			<input class="input-sm form-control" type="numeric" name="nbQuestion" placeholder="Nombre de question" />
+			
+			<input class="input-sm form-control" type="numeric" name="duree" placeholder="Duree en min" />
+			
 			<br/>
 			<button type="submit" class="button special">Valider</button>
 		</form>
