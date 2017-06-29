@@ -15,6 +15,7 @@ import bo.QuestionBO;
 import bo.TestBO;
 import bo.Utilisateur;
 import dao.QuestionDAO;
+import dao.ReponseUtilDAO;
 import dao.TestDAO;
 
 /**
@@ -52,13 +53,15 @@ public class TestServlet extends HttpServlet {
 			RequestDispatcher dispatcher = req.getRequestDispatcher("test.jsp");
 
 			int id = Integer.parseInt(req.getParameter("idTest"));
-
+			
+			Utilisateur u = (Utilisateur) req.getSession().getAttribute("utilisateur");
 			List<QuestionBO> unTest = null;
 			try {
 				unTest = QuestionDAO.selectAllByCategorie(id);
-					
+				List<Integer> verifReponse = ReponseUtilDAO.verifReponse(u.getId());	
 				req.setAttribute("idTest", String.valueOf(id));
 				req.setAttribute("unTest", unTest);
+				req.setAttribute("verifReponse", verifReponse);
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

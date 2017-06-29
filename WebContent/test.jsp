@@ -30,7 +30,20 @@
 				<td><%=pTest.get(i).getCategorie().getLibelle()%></td>
 				<td>Question : <%=i+1 %></td>
 					<td><a href="<%=request.getContextPath()%>/question?idTest=<%=request.getAttribute("idTest")%>&id=<%=pTest.get(i).getId() %>" class="button special">Répondre</a></td>
-					<td><i class="fa fa-check-square-o" aria-hidden="true"></i></td>	
+					
+					<% List<Integer> verifReponse = ((List<Integer>) request.getAttribute("verifReponse")); %>
+					<% boolean bool = false; %>
+					<% for (Integer value : verifReponse) {
+						if (value.equals(pTest.get(i).getId())) { 
+							bool = true;						
+						 } 
+					 } 
+						if (bool) { %>
+							<td><i class="fa fa-check-square-o" aria-hidden="true"></i></td>	
+						<% } else { %>
+							<td></td>
+					 <% } %>
+					
 			</tr>
 			<%
 				}
