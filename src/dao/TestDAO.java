@@ -35,6 +35,21 @@ public class TestDAO {
 		return listTestBO;
 	}
 	
+	public static void SupprimerTest(int idTest) throws SQLException {
+		Connection con = ConnectionManager.getConnection();
+		String req = "DELETE FROM Test WHERE idTest = ?";
+		
+		try {
+			PreparedStatement st = con.prepareStatement(req);
+			st.setInt(1, idTest);
+			
+			st.executeUpdate();
+			st.close();
+		} catch (SQLException e) {
+			throw e;
+		}
+	}
+	
 	public static void creationTest(TestBO test) throws SQLException {
 		
 		Connection con = ConnectionManager.getConnection();
