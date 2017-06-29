@@ -36,6 +36,8 @@
 			<%
 				for (TestBO test : listTest) {
 			%>
+			
+			
 			<tr>
 				<td><%=test.getId()%></td>
 				<td><%=test.getLibelle()%></td>
@@ -43,18 +45,38 @@
 					<a href="<%=request.getContextPath()%>/test?id=<%=test.getId()%>">Lancer le test</a>
 					<% if("Admin".equals(sessionUtilisateur.getType())) { %>
 					&nbsp
-					<a href="<%=request.getContextPath()%>/suppressionTest?id=<%=test.getId()%>">Suprimer le test</a>
+					<a data-toggle="modal" data-target="#myModal" href="#">Supprimer le test</a>
 					&nbsp
 					<a href="<%=request.getContextPath()%>/editionTest?id=<%=test.getId()%>">Editer le test</a>
 					<% } %>
 				</td>
 			</tr>
+			<!-- Modal -->
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+			      </div>
+			      <div class="modal-body">
+			      Voulez-vous supprimer le test ?
+			      </div>
+			      <div class="modal-footer">
+			        <a data-dismiss="modal">Close</a>
+			        <a href="<%=request.getContextPath()%>/suppressionTest?id=<%=test.getId()%>">Supprimer le test</a>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+			
+			
 			<%
 				}
 			%>
 		</tbody>
 	</table>
 </div>
+
 
 <!-- Elements -->
 </div>

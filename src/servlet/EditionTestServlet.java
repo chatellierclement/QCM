@@ -38,36 +38,50 @@ public class EditionTestServlet extends HttpServlet {
 		unTest.setLibelle(libelle);
 		uneCategorie.setId(categorieId);
 		unTest.setCategorie(uneCategorie);
+		
 		try {
 			TestDAO.Editiontest(unTest);
+			response.sendRedirect("logged");
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		generate(request, response);
 	}
 	
 	private void generate(HttpServletRequest req, HttpServletResponse resp) {
 		RequestDispatcher dispatcher = req.getRequestDispatcher("editionTest.jsp");
-		
-		int id = Integer.parseInt(req.getParameter("id"));
-		try {
-			TestBO unTest = TestDAO.selectTestById(id);
-			req.setAttribute("unTest", unTest);
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+		String o = req.getParameter("id");
+		if((o == null) || ("0".equals(o))) {
+			try {
+				resp.sendRedirect("logged");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} else {
+			int id = Integer.parseInt(req.getParameter("id"));
+			
+			try {
+				TestBO unTest = TestDAO.selectTestById(id);
+				req.setAttribute("unTest", unTest);
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+			List<CategorieBO> lesCategories = null;
+			lesCategories = CategorieDAO.getAll();
+			
+			req.setAttribute("lesCategories", lesCategories);
+			
+			try {
+				dispatcher.forward(req, resp);
+			} catch (ServletException | IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
-		List<CategorieBO> lesCategories = null;
-		lesCategories = CategorieDAO.getAll();
 		
-		req.setAttribute("lesCategories", lesCategories);
-		
-		try {
-			dispatcher.forward(req, resp);
-		} catch (ServletException | IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 }
