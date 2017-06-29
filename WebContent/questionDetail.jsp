@@ -18,28 +18,42 @@
 <hr class="major" />
 <% 	Utilisateur sessionUtilisateur = (Utilisateur) request.getSession().getAttribute("utilisateur"); %>	
 
-<div class="table-wrapper">
-	<table>
-		<thead>
-			<tr>
-				<th><%=pQuestion.get(0).getLibelle()%></th>
-			</tr>
-		</thead>
-		<tbody>
-			<%
-				for (ReponseBO reponse : pReponse) {
-			%>
-			<tr>
-
-				<td><%=reponse.getLibelle()%></td>
-			</tr>
-			<%
-				}
-			%>
-
-		</tbody>
-	</table>
-</div>
+<form>
+	<div class="table-wrapper">
+		<table>
+			<thead>
+				<tr>
+					<th><%=pQuestion.get(0).getLibelle()%></th>
+				</tr>
+			</thead>
+			<tbody>
+				<%
+					String id = "demo-priority-low";
+					for (int i = 0; i< pReponse.size(); i++) {			
+						if (i == 1) {
+							id = "demo-priority-normal";
+						} else if (i == 2) {
+							id = "demo-priority-high";
+						}
+				%>			
+				<tr>
+	
+					<td><%=pReponse.get(i).getLibelle()%></td>
+					<td>
+						<div class="4u 12u$(small)">
+							<input id="<%= id %>" type="radio" name="demo-priority" value="<%=pReponse.get(i).getId() %>" />
+							<label for="<%= id %>"></label>
+						</div>
+					</td>
+				</tr>
+				<%
+					}
+				%>
+			</tbody>
+		</table>
+	</div>
+	<center><input class="button default" type="submit" value="Envoyer la réponse" /></center>	
+</form>
 
 <!-- Elements -->
 </div>
