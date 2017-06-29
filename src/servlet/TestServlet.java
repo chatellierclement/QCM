@@ -51,12 +51,13 @@ public class TestServlet extends HttpServlet {
 
 			RequestDispatcher dispatcher = req.getRequestDispatcher("test.jsp");
 
-			int id = Integer.parseInt(req.getParameter("id"));
+			int id = Integer.parseInt(req.getParameter("idTest"));
 
 			List<QuestionBO> unTest = null;
 			try {
 				unTest = QuestionDAO.selectAllByCategorie(id);
-
+					
+				req.setAttribute("idTest", String.valueOf(id));
 				req.setAttribute("unTest", unTest);
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block

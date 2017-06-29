@@ -45,6 +45,7 @@ public class QuestionServlet extends HttpServlet{
 		} else {
 			// coder ici :
 			int id = Integer.parseInt(req.getParameter("id"));
+			int idTest = Integer.parseInt(req.getParameter("idTest"));
 			RequestDispatcher dispatcher = req.getRequestDispatcher("questionDetail.jsp");
 
 
@@ -52,8 +53,10 @@ public class QuestionServlet extends HttpServlet{
 			List<QuestionBO> pQuestion = null;
 			try {
 				pReponse = ReponseDAO.selectAllByQuestion(id);
-				pQuestion = QuestionDAO.selectAllByCategorie(id);
-
+				pQuestion = QuestionDAO.selectAllByCategorie(idTest);
+				
+				req.setAttribute("id", String.valueOf(id));
+				req.setAttribute("idTest", String.valueOf(idTest));
 				req.setAttribute("pReponse", pReponse);
 				req.setAttribute("pQuestion", pQuestion);
 			} catch (SQLException e1) {

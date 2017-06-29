@@ -40,7 +40,7 @@
 				<td><%=test.getId()%></td>
 				<td><%=test.getLibelle()%></td>
 				<td>
-					<a href="<%=request.getContextPath()%>/test?id=<%=test.getId()%>">Lancer le test</a>
+					<a href="<%=request.getContextPath()%>/test?idTest=<%=test.getId()%>">Lancer le test</a>
 					<% if("Admin".equals(sessionUtilisateur.getType())) { %>
 					&nbsp
 					<a href="<%=request.getContextPath()%>/suppressionTest?id=<%=test.getId()%>">Suprimer le test</a>

@@ -20,7 +20,7 @@
 	Utilisateur sessionUtilisateur = (Utilisateur) request.getSession().getAttribute("utilisateur");
 %>	
 
-<form action="" method="post">
+<form action="validerReponse?idTest=<%= request.getAttribute("idTest")%>&id=<%= request.getAttribute("id") %>" method="post">
 	<div class="table-wrapper">
 		<table>
 			<thead>
