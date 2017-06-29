@@ -29,9 +29,8 @@
 			<tr>
 				<td><%=pTest.get(i).getCategorie().getLibelle()%></td>
 				<td>Question : <%=i+1 %></td>
-<%-- 				<td><a href="<%=request.getContextPath()%>/test?id=<%=test.getId()%>">Lancer le test</a>
- --%>				<td><a href="<%=request.getContextPath()%>/question?id=<%=pTest.get(i).getId() %>" class="button special">Répondre</a></td>
-				
+					<td><a href="<%=request.getContextPath()%>/question?id=<%=pTest.get(i).getId() %>" class="button special">Répondre</a></td>
+					<td><i class="fa fa-check-square-o" aria-hidden="true"></i></td>	
 			</tr>
 			<%
 				}
