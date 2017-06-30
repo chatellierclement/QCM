@@ -59,9 +59,10 @@ public class CreationQuestionServlet extends HttpServlet {
 		String question = request.getParameter("question");
 		int categorie = Integer.parseInt(request.getParameter("categorie"));
 		String[] reponses = request.getParameterValues("reponse");
+		String[] etats = request.getParameterValues("etat");
 		
-		if(question == null || question.length() <= 0 || reponses == null || reponses.length <= 0 || categorie <= 0) {
-			doGet(request, response) ;
+		if(question == null || question.length() <= 0 || reponses == null || reponses.length <= 0 || etats == null || etats.length <= 0 || categorie <= 0) {
+			response.sendRedirect("creationQuestion");
 		}
 		
 		CategorieBO uneCategorie = new CategorieBO() ;
@@ -74,16 +75,14 @@ public class CreationQuestionServlet extends HttpServlet {
 		try {
 			int idQuestion = QuestionDAO.enregistrer(uneQuestion);
 			
-			//on rajoute son id à la question
+			//on rajoute son id a la question
 			uneQuestion.setId(idQuestion);
 			
-			//System.out.println(question) ;
 			for(int i = 0; i < reponses.length; i++)
 			{
-				//System.out.println(reponses[i]);
 				ReponseBO uneReponse = new ReponseBO();
 				uneReponse.setLibelle(reponses[i]) ;
-				uneReponse.setId(0);
+				uneReponse.setEtat(Integer.parseInt(etats[i]));
 				uneReponse.setQuestion(uneQuestion);
 				
 				try {
@@ -98,7 +97,7 @@ public class CreationQuestionServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		
+		response.sendRedirect("listeQuestion");
 	}
 
 }

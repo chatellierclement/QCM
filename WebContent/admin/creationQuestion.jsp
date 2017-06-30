@@ -11,7 +11,7 @@
 <body>
 	<h1 align="center">Création d'une question</h1>
 	<br/>
-	<div class="col-md-6 col-md-offset-3">
+	<div class="col-md-8 col-md-offset-2">
 		<form action="creationQuestion" method="post" align="center">
 			
 			<div class="col-md-3">
@@ -37,18 +37,31 @@
 						<input class="input-sm form-control" type="text" name="rep" placeholder="Saisissez une réponse à la question" />
 					</div>
 			   	 	<div class="col-md-2">
-			   	 	<br>
-			  			<button id="btnAjout" type="button" class="btn btn-primary btn-sm">+</button>
+			   	 		<a href="#" id="btnAjout" class="button special">+</a>	
 			  		</div>
 			  	</div>
 			</div>
+			
+			<table class="tabReponse">
+				<thead>
+					<tr>
+						<td width="65%">Réponse</td>
+						<td width="25%">Etat</td>
+						<td width="10%">Supprimer</td>
+					</tr>
+				</thead>
+				<tbody>
+					
+				</tbody>
+			</table>
 			
 			<div id="reponses">
 			
 			</div>
 			
 			<br/>
-			<button class="btn btn-primary">Valider</button>
+			
+			<a href="#" id="btnValide" class="button special">Valider</a>
 		</form>
 	</div>
 	<script>
@@ -63,15 +76,27 @@
 			}
 
 			if(reponse.trim().length > 0) {
-				$("#reponses").append("<p>" + nbReponse + ". " + reponse + "</p>") ;
+				$("tbody").append("<tr><td>" + reponse + "</td><td><select class='choixEtat'><option value='0'>Mauvaise Réponse</option><option value='1'>Bonne Réponse</option></select></td><td><button class='supprimerRep btn-sm'>X</button></td><input type='hidden' name='reponse' value='" + reponse + "' /><input type='hidden' name='etat' value='0' /></tr>") ;
+				
 				nbReponse++;
 				$("input[name='rep']").val("") ;
-				$("#reponses").append("<input type='hidden' name='reponse' value='" + reponse + "' />");
 			}
 			else {
 				alert("Veuillez saisir une réponse avant de valider !") ;
 			}
 			
+		}) ;
+		
+		$("#btnValide").click(function() {
+			$("form").submit();
+		}) ;
+		
+		$(".tabReponse").on('click', '.supprimerRep', function () {
+			$(this).closest('tr').remove();
+		}) ;
+		
+		$(document).on('change', 'select.choixEtat', function() {
+			$(this).closest('tr').find("input[name='etat']").val(this.value) ;
 		}) ;
 	</script>
 </body>
