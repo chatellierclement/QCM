@@ -35,6 +35,9 @@ public class CreationTestServlet extends HttpServlet {
 		int nbQuestion = Integer.parseInt(request.getParameter("nbQuestion"));
 		int duree = Integer.parseInt(request.getParameter("duree"));
 		
+		List<Utilisateur> lesUtilisateurs = UtilisateurDAO.getAll();
+		
+				
 		TestBO unTest = new TestBO();
 		CategorieBO uneCategorie = new CategorieBO();
 		unTest.setLibelle(libelle);

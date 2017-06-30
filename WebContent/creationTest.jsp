@@ -38,24 +38,7 @@
 				class="input-sm form-control" type="numeric" name="duree"
 				placeholder="Duree en min" />
 
-			<h2>Ajouter les utilisateurs au test</h2>
-
-			<%
-				for (Utilisateur unUtilisateur : lesUtilisateurs) {
-			%>
-			<label> <input type="checkbox"
-				id="checkBox<%=unUtilisateur.getId()%>"
-				value="<%=unUtilisateur.getId()%>" /> <%=unUtilisateur.getNom()%> <%=unUtilisateur.getPrenom()%>
-			</label>
-
-			<%
-				}
-			%>
-			<div class="6u 12u$(small)">
-				<input type="checkbox" id="demo-copy" name="demo-copy"> <label
-					for="demo-copy">Email me a copy</label>
-			</div>
-
+			
 			<br />
 			<button type="submit" class="button special">Valider</button>
 		</form>
